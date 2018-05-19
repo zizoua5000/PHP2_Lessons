@@ -1,6 +1,6 @@
 <?
 Class Goods {
-    private $price, $condition, $manufacturer, $name;
+    public $price, $condition, $manufacturer, $name;
     function __construct($price, $condition, $manufacturer, $name) {
         $this->price = $price;
         $this->condition = $condition;
@@ -14,7 +14,7 @@ Class Goods {
 
 
 Class Books extends Goods {
-    private $pages, $author;
+    public $pages, $author;
     function __construct($price, $condition, $manufacturer, $name, $pages, $author){
         parent::__construct($price, $condition, $manufacturer, $name);
         $this->pages = $pages;
@@ -27,7 +27,7 @@ Class Books extends Goods {
 }
 
 Class Notebook extends Goods {
-    private $scrennSize, $cpu, $ram;
+    public $scrennSize, $cpu, $ram;
     function __construct($price, $condition, $manufacturer, $name, $scrennSize, $cpu, $ram){
         parent::__construct($price, $condition, $manufacturer, $name);
         $this->screenSize = $scrennSize;
