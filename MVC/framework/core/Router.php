@@ -9,19 +9,57 @@ class Router {
         
     }
     
+    /*
+    * Returns request string
+    *    
+    */    
+    private function getURI(){
+        if (!empty($_SERVER['REQUEST_URI'])) {
+            return trim($_SERVER['REQUEST_URI'], '/');
+        }
+    }
+    
     public function run(){
         // Получить строку запроса
         
-        // проверить наличие такого запроса в роутер.пхп
+            $uri = $this->getURI();
         
-        // если есть совпадение определить какой контроллер и акшинобрабатывают запрос
+        
+      
+        // проверить наличие такого запроса в роутер.пхп
+        foreach ($this->routes as $uripattern => $path) {
+            
+            // $uripattern and $uri comparison
+            if (preg_match("~$uripattern~", $uri)) {
+                
+                 // если есть совпадение определить какой контроллер и акшинобрабатывают запрос
+                $segments = explode('/', $path);
+                $controllerName = array_shift($segments).'Controller';
+                $controllerName = ucfirst($controllerName);
+                
+                $actionName = 'action'.ucfirst(array_shift($segments));
+     
         
         // Подключить файл класса контроллера
+        $controllerFile = ROOT . '/application/controllers/' . $controllerName . '.php';
+        
+        if (file_exists($controllerFile)) {
+            include_once($controllerFile);
+        }
+        
+        
         
         // Создать объект и вызвать метод(т.е. акшин)
         
+        $controllerObject = new $controllerName;
+        $result = $controllerObject->$actionName();
+        if ($result != null) {
+            break;
+        }
         
     }
     
+   }
+}
     
 }
