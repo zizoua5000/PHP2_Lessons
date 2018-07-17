@@ -2,7 +2,13 @@
 
 class NewsController {
     public function actionIndex(){
-        echo "news action";
+        echo "action list";
+        return true;
+    }
+    
+    public function actionView($category, $id) {
+        echo $category;
+        echo $id;
         return true;
     }
 }
