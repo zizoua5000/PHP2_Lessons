@@ -4,9 +4,10 @@ class SiteController {
     
     
     public function actionIndex(){
-        
-        require_once(ROOT . '/application/views/site/index.php');
-        
+      
+        include (ROOT . '/application/views/site/index.php');
+        echo 'ssss0';
+       
         return true;
     }
 }

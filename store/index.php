@@ -22,7 +22,7 @@ error_reporting(E_ALL);
 //2. Подключение файлов системы. на будующее нужен автолоадер
 define('ROOT', dirname(__FILE__));
 require_once(ROOT.'/framework/core/Router.php');
-//require_once(ROOT.'/framework/database/Db.php');
+require_once(ROOT.'/framework/database/Db.php');
 
 // 3. Установка соединения с БД
 

@@ -40,8 +40,8 @@ class Router {
             if (preg_match("~$uripattern~", $uri)) {
                 // Get internal path based on external rule
                 $internalRoute = preg_replace("~$uripattern~", $path, $uri);
-                echo '<br>'. $uri.'<br>'; 
-                echo $path;
+/*                echo '<br>'. $uri.'<br>'; 
+                echo $path;*/
      
         
         
@@ -53,12 +53,12 @@ class Router {
                 
                 $actionName = 'action'.ucfirst(array_shift($segments));
 
-                echo '<br>'. $controllerName ;
-                echo '<br>' .$actionName;
+/*                echo '<br>'. $controllerName ;
+                echo '<br>' .$actionName;*/
                 $parameters=$segments;
-                echo '<pre>';
+                /*echo '<pre>';
                 print_r($parameters);
-                
+                */
                 $controllerFile = ROOT . '/application/controllers/' . $controllerName . '.php';
                 
                 
@@ -71,9 +71,11 @@ class Router {
                 // Создать объект и вызвать метод(т.е. акшин)
                 $controllerObject = new $controllerName;
                 
-                
-                
+//                $result=1;
+//                $controllerObject -> $actionName();
+                echo $actionName;
                 $result = call_user_func_array(array($controllerObject, $actionName), $parameters);
+//               var_dump($result);
                 if ($result != null) {
                     break;
                 }
