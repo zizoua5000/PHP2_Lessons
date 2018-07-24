@@ -40,8 +40,9 @@ class Router {
             if (preg_match("~$uripattern~", $uri)) {
                 // Get internal path based on external rule
                 $internalRoute = preg_replace("~$uripattern~", $path, $uri);
-/*                echo '<br>'. $uri.'<br>'; 
-                echo $path;*/
+                echo '<br>'. $uri .'<br>'; 
+                print_r ($uripattern);
+                echo '<br>'. $path;
      
         
         

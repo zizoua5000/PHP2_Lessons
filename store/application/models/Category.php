@@ -9,10 +9,13 @@ class Category {
         $db= Db::getConnection();
         
         $categoryList = array();
-        $result = $db->query('SELECT id, name, From category ORDER By sort_order ASC');
+        $result = $db->query('SELECT id, name From category ORDER By sort_order ASC');
+        
+        
         
         $i=0;
-        while($row=$result->fetch()) {
+        while($row=$result->fetch(PDO::FETCH_ASSOC)) {
+            print_r($row);
             $categoryList[$i]['id'] = $row['id'];
             $categoryList[$i]['name'] = $row['name'];
             $i++;
