@@ -36,19 +36,21 @@ class Router {
         // проверить наличие такого запроса в роутер.пхп
         foreach ($this->routes as $uripattern => $path) {
             
+            $uripattern_timmed = trim($uripattern, '/');
             // $uripattern and $uri comparison
-            if (preg_match("~$uripattern~", $uri)) {
+            if  (preg_match("~$uripattern_timmed~", $uri)) {
                 // Get internal path based on external rule
-                $internalRoute = preg_replace("~$uripattern~", $path, $uri);
-                echo '<br>'. $uri .'<br>'; 
-                print_r ($uripattern);
-                echo '<br>'. $path;
+                $internalRoute = preg_replace("~$uripattern_timmed~", $path, $uri);
+/*                echo '<br>'. $uri .'<br>1'; 
+                echo ($uripattern);
+                echo '<br>2'. $internalRoute;*/
      
         
         
                 //
                 // если есть совпадение определить какой контроллер и акшинобрабатывают запрос
                 $segments = explode('/', $internalRoute);
+//                print_r($segments);
                 $controllerName = array_shift($segments).'Controller';
                 $controllerName = ucfirst($controllerName);
                 
@@ -57,9 +59,9 @@ class Router {
 /*                echo '<br>'. $controllerName ;
                 echo '<br>' .$actionName;*/
                 $parameters=$segments;
-                /*echo '<pre>';
-                print_r($parameters);
-                */
+/*                echo '<br>2222';
+                print_r($parameters);*/
+                
                 $controllerFile = ROOT . '/application/controllers/' . $controllerName . '.php';
                 
                 
@@ -74,7 +76,7 @@ class Router {
                 
 //                $result=1;
 //                $controllerObject -> $actionName();
-                echo $actionName;
+               // echo $actionName;
                 $result = call_user_func_array(array($controllerObject, $actionName), $parameters);
 //               var_dump($result);
                 if ($result != null) {
