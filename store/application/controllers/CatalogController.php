@@ -29,7 +29,7 @@ class CatalogController {
         $latestProducts = array();
         $latestProducts = Product::getProductsListByCategory($categoryId, $page);
         
-        $total = Product:getTotalProductsInCategory($categoryId);
+        $total = Product::getTotalProductsInCategory($categoryId);
         
         $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, 'page-');
 
