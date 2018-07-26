@@ -2,6 +2,7 @@
 
 include ROOT . '/application/models/Category.php';
 include ROOT . '/application/models/Product.php';
+include ROOT . '/framework/core/Pagination.php';
 
 class CatalogController {
     
@@ -20,12 +21,17 @@ class CatalogController {
         return true;
     }
     
-    public function actionCategory($categoryId) {
+    public function actionCategory($categoryId, $page = 1) {
+            
         $categories = array();
         $categories = Category::getCategoriesList();
         
         $latestProducts = array();
-        $latestProducts = Product::getProductsListByCategory($categoryId);
+        $latestProducts = Product::getProductsListByCategory($categoryId, $page);
+        
+        $total = Product:getTotalProductsInCategory($categoryId);
+        
+        $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, 'page-');
 
         include (ROOT . '/application/views/catalog/category.php');
         return true;
