@@ -1,7 +1,5 @@
 <?php
 
-include ROOT . '/application/models/Category.php';
-include ROOT . '/application/models/Product.php';
 
 class SiteController {
     

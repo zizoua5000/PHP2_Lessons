@@ -1,8 +1,6 @@
 <?php
 
-include ROOT . '/application/models/Category.php';
-include ROOT . '/application/models/Product.php';
-include ROOT . '/framework/core/Pagination.php';
+
 
 class CatalogController {
     
