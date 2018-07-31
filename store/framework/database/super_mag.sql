@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 28, 2018 at 09:14 PM
+-- Generation Time: Jul 31, 2018 at 04:43 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `super_mag`
 --
-CREATE DATABASE IF NOT EXISTS `super_mag` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `super_mag`;
 
 -- --------------------------------------------------------
 
@@ -99,6 +97,27 @@ INSERT INTO `product` (`id`, `name`, `category_id`, `code`, `price`, `availabili
 (25, 'Polo shirt', 1, 123111, 334, 1, 'Marco', '', 'Mentitum a singulis, tempor non varias ab de summis probant, summis officia non \r\nphilosophari. In labore illustriora ita senserit aute e nostrud comprehenderit, \r\nlaboris do sint, legam efflorescere possumus culpa singulis. Incurreret te \r\nnescius in esse est ne quorum incididunt. Nescius multos veniam expetendis \r\nillum, proident elit laboris a est te amet labore illum, ea minim do velit quo \r\nsint quo consequat, ne noster ex culpa, iis dolor an cillum sed laboris multos \r\neiusmod. Iis o distinguantur. Ab quid veniam aute probant, deserunt non illum \r\nlaborum ita offendit tamen officia excepteur et incurreret sunt appellat \r\nfabulas, te eram aliquip mentitum, se iis malis eram magna, do eram varias ubi \r\nquibusdam, malis mentitum voluptatibus. In lorem efflorescere a ut est sint \r\npariatur. Tempor an aute incididunt, eiusmod nisi summis id legam.', 0, 0, 1),
 (26, 'Shirt2', 2, 4534, 87, 1, 'Tusa', '', 'Mentitum a singulis, tempor non varias ab de summis probant, summis officia non \r\nphilosophari. In labore illustriora ita senserit aute e nostrud comprehenderit, \r\nlaboris do sint, legam efflorescere possumus culpa singulis. Incurreret te \r\nnescius in esse est ne quorum incididunt. Nescius multos veniam expetendis \r\nillum, proident elit laboris a est te amet labore illum, ea minim do velit quo \r\nsint quo consequat, ne noster ex culpa, iis dolor an cillum sed laboris multos \r\neiusmod. Iis o distinguantur. Ab quid veniam aute probant, deserunt non illum \r\nlaborum ita offendit tamen officia excepteur et incurreret sunt appellat \r\nfabulas, te eram aliquip mentitum, se iis malis eram magna, do eram varias ubi \r\nquibusdam, malis mentitum voluptatibus. In lorem efflorescere a ut est sint \r\npariatur. Tempor an aute incididunt, eiusmod nisi summis id legam.', 1, 0, 1);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `name`, `email`, `password`) VALUES
+(1, 'Abdullah', 'Abdullah@hhh.com', '1234567'),
+(3, 'sdfsdf', 'sdfsdfd@fff.nn', 'ktu7mmmm');
+
 --
 -- Indexes for dumped tables
 --
@@ -116,6 +135,12 @@ ALTER TABLE `product`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -130,6 +155,12 @@ ALTER TABLE `category`
 --
 ALTER TABLE `product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
