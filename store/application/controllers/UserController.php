@@ -81,5 +81,11 @@ class UserController {
         
         return true;
     }
+    
+    public function actionLogin(){
+        session_start();
+        unset($_SESSION['user']);
+        header("Location: /");
     }
+    
 }

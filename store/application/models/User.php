@@ -72,5 +72,39 @@ class User {
         
     }
     
+     public static function auth($userId) {
+        
+        $_SESSION['user'] = $userId;
+        
+    }
     
+     public static function checkLogged() {
+  
+        if (isset($_SESSION['user'])) {
+            return $_SESSION['user'];
+        }
+        header('Location: /user/login');
+    }
+    
+     public static function checkLogged() {
+        if (isset($_SESSION['user'])) {
+            return false;
+        }
+        return true;        
+    }
+    
+    public static function getUserById($id) {
+        if ($id) {
+            $db = Db::getConnection();
+            $sql = 'Select * From user Where id = :id';
+            
+            $result = $db->prepare($sql);
+            $result -> bundParam(':id', $id, PDO::PARAM_INT);
+            
+            $result->setFetchMode(PDO::FETCH_ASSOC);
+            $result->execute();
+            
+            return $result->fetch();
+        }
+    }
 }
